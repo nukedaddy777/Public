@@ -1,0 +1,122 @@
+﻿<Window x:Class="WpfMenuTestApp.ColorPickerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:shapes="clr-namespace:System.Windows.Shapes;assembly=PresentationFramework"
+        xmlns:local="clr-namespace:WpfMenuTestApp"
+        mc:Ignorable="d"
+        Title="ColorPickerWindow" Height="450" Width="400">
+    <Grid Background="LightGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="320"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <!-- Controls -->
+        <StackPanel Grid.Column="0" Margin="20" Background="LightGray">
+
+            <!-- Red -->
+            <Grid Margin="0,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="55"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="R:" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Slider x:Name="sliderR" Grid.Column="1" Minimum="0" Maximum="255" 
+                        TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged"/>
+                <TextBox x:Name="textR" Grid.Column="2" Text="255" TextAlignment="Center" 
+                         TextChanged="ColorText_TextChanged" Margin="8,0,0,0"/>
+            </Grid>
+
+            <!-- Green -->
+            <Grid Margin="0,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="55"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="G:" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Slider x:Name="sliderG" Grid.Column="1" Minimum="0" Maximum="255" 
+                        TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged"/>
+                <TextBox x:Name="textG" Grid.Column="2" Text="255" TextAlignment="Center" 
+                         TextChanged="ColorText_TextChanged" Margin="8,0,0,0"/>
+            </Grid>
+
+            <!-- Blue -->
+            <Grid Margin="0,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="55"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="B:" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Slider x:Name="sliderB" Grid.Column="1" Minimum="0" Maximum="255" 
+                        TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged"/>
+                <TextBox x:Name="textB" Grid.Column="2" Text="255" TextAlignment="Center" 
+                         TextChanged="ColorText_TextChanged" Margin="8,0,0,0"/>
+            </Grid>
+
+            <!-- Alpha -->
+            <Grid Margin="0,8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="55"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="A:" FontWeight="Bold" VerticalAlignment="Center"/>
+                <Slider x:Name="sliderA" Grid.Column="1" Minimum="0" Maximum="255" 
+                        TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="Slider_ValueChanged"/>
+                <TextBox x:Name="textA" Grid.Column="2" Text="255" TextAlignment="Center" 
+                         TextChanged="ColorText_TextChanged" Margin="8,0,0,0"/>
+            </Grid>
+
+            <!-- Hex -->
+            <Grid Margin="0,15,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="#" FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBox x:Name="textHex" Grid.Column="1" Text="#FFFFFFFF" FontFamily="Consolas"
+                         TextChanged="HexText_TextChanged"/>
+            </Grid>
+
+            <!-- Buttons -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                <Button Content="OK" Width="90" Height="32" Click="OkButton_Click" Margin="5"/>
+                <Button Content="Cancel" Width="90" Height="32" Click="CancelButton_Click" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+        <GroupBox Header="Palette" Grid.Column="1" BorderThickness="3" BorderBrush="Black">
+            <ItemsControl x:Name="PaletteGrid" Background="White"
+                  MouseDown="PaletteGrid_MouseDown">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="16" Columns="8"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Rectangle Margin="1">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="{Binding Brush}" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </GroupBox>
+        <!-- Preview -->
+        <GroupBox Header="Selected Color" Grid.Row="1" Grid.ColumnSpan="2">
+            <Border  Margin="8" BorderBrush="#555" BorderThickness="3" CornerRadius="8" Background="White">
+                <Rectangle x:Name="colorPreview" Margin="12"/>
+            </Border>
+        </GroupBox>
+    </Grid>
+</Window>
