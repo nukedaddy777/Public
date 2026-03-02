@@ -1,5 +1,15 @@
-﻿//JJ                          Copyright Richard Holland 2026 All Rights Reserved
-/*
+﻿/* JJ               @Copyright Richard Andrew Holland 2026 All Rights Reserved 
+
+# __AndysWpfWindowManager__ is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# __AndysWpfWindowManager__ is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details. -->
+ *
  *  This file contains the TabDialogController that is used for dialogs where there are common attributes and one can open
  *  several tabbed dialogs for fast paced input data. For example when an operator has a number of entries of a similar type
  *  (a number of people entering a facility door in a group) and one makes a quick count and then enters the data. 

@@ -59,3 +59,4 @@ E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-w
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.pdb
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.genruntimeconfig.cache
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\ref\AndysWpfWindowManager.dll
+E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.sourcelink.json

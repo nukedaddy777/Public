@@ -1,4 +1,15 @@
-﻿using System;
+﻿/* !--JJ               @Copyright Richard Andrew Holland 2026 All Rights Reserved 
+
+# __AndysWpfWindowManager__ is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# __AndysWpfWindowManager__ is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details. --> */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,10 +45,18 @@ namespace AndysWpfWindowManager
                 "The listbox window on the left illustrates that the windows in the app\n"+
                 "are manageable from a central location and one can focus, close or retrieve\n"+
                 "desparate windows in a number of ways";
+
+            // Prevent window drag when clicking on canvas
+            this.MouseLeftButtonDown += PageMouseDown;
         }
 
         WpfGenericUtility? mdialog = null;   //Generic window utility fram for trucks, only one per location
-      
+
+        private void PageMouseDown(object sender, MouseEventArgs e)
+        {
+            e.Handled = true;
+        }
+
         private void btnNewWindow_Click(object sender, RoutedEventArgs e)
         {
             if (sender == null) return;
