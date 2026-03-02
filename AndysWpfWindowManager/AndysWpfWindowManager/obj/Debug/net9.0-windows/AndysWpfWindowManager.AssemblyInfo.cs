@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AndysWpfWindowManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+613fe2f2c2e4c2cebf3880f92174c6d47e408392")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0151218a86b12aae5f4edaf9219b7d4d9b3e1dd5")]
 [assembly: System.Reflection.AssemblyProductAttribute("AndysWpfWindowManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AndysWpfWindowManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

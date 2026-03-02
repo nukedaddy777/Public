@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "AndysWpfWindowManager\\XPageTest.xaml.cs",
               "ToolTip": "E:\\SRC\\PublicRepo\\AndysWpfWindowManager\\AndysWpfWindowManager\\XPageTest.xaml.cs",
               "RelativeToolTip": "AndysWpfWindowManager\\XPageTest.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-02T04:00:25.491Z",
               "EditorCaption": ""
@@ -54,8 +54,7 @@
               "ToolTip": "E:\\SRC\\PublicRepo\\AndysWpfWindowManager\\AndysWpfWindowManager\\WpfGenericUtility.xaml",
               "RelativeToolTip": "AndysWpfWindowManager\\WpfGenericUtility.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-02T03:58:31.524Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T03:58:31.524Z"
             },
             {
               "$type": "Document",
@@ -67,8 +66,7 @@
               "RelativeToolTip": "AndysWpfWindowManager\\WpfGenericUtility.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T03:55:26.377Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T03:55:26.377Z"
             },
             {
               "$type": "Document",
@@ -80,8 +78,7 @@
               "RelativeToolTip": "AndysWpfWindowManager\\YPageTest.xaml.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAAADIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-02T03:54:41.312Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-02T03:54:41.312Z"
             }
           ]
         }
