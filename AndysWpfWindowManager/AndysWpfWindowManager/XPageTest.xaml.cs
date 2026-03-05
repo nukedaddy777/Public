@@ -1,11 +1,11 @@
 ﻿/* !--JJ               @Copyright Richard Andrew Holland 2026 All Rights Reserved 
 
-# __AndysWpfWindowManager__ is free software: you can redistribute it and/or modify
+# __AndysWpfWindowManager__ and this file is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 #
-# __AndysWpfWindowManager__ is distributed in the hope that it will be useful,
+# __AndysWpfWindowManager__ and this file is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details. --> */
