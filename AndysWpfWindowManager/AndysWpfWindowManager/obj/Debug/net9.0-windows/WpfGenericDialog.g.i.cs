@@ -101,7 +101,7 @@ namespace AndysWpfWindowManager {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AndysWpfWindowManager;V1.0.0.0;component/wpfgenericdialog.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AndysWpfWindowManager;component/wpfgenericdialog.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\WpfGenericDialog.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

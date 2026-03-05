@@ -69,7 +69,7 @@ namespace AndysWpfWindowManager {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AndysWpfWindowManager;V1.0.0.0;component/pagetabdialogbar.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AndysWpfWindowManager;component/pagetabdialogbar.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\PageTabDialogBar.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

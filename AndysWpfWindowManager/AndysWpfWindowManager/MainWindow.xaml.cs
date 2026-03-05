@@ -13,10 +13,12 @@
  * This mainwindow demonstrates the creation of a specialized main window with title and controls.This improves
  * visualization, the Main Window Control and xaml pattern below followed to produce a customizable window
  * 
- * Above the title, one must catch left mouse clicks, MouseLeftButtonDown in the xaml as follows:
+ * Above the title, in the MainWindow.xaml one must catch left mouse clicks, MouseLeftButtonDown in the xaml as follows:
  *           mc:Ignorable="d" WindowStyle="None" 
  *           MouseLeftButtonDown="Window_MouseLeftButtonDown"
- * 
+ *           
+ * The mouse down drag and drop events are captured in the region #region Main Window Control below. 
+ *          
  * Below the title is xaml as below that contains the control stackpanel and window title allow specialization.
  * Colors and Grid row definitions are dependent on application and taste. The normal title is covered over and 
  * the xaml below would be extended in the second row to contain the normal window data. The stackpanel has the buttons
@@ -51,7 +53,23 @@
             </Grid>
         </Grid>
     </Border>
+ 
+ * You attach your own pages to containers of three basic types provided here, WpfGenericDialog ContentFrame.Content, 
+ * WpfGenericUtilit UtilityContentFrame.Content and you can place tabs on a tabcontroller using FrameTabContainer.Content.
+ * When needed, to assure that the left mouse button is NOT captured by decorating pages and tabs interfering with your
+ * page, you can use the following in your page:
  * 
+ * private void PageMouseDown(object sender, MouseEventArgs e)
+        {
+            e.Handled = true;
+        }
+ *  
+ *  where PageMouseDown captures the mouse down this(your Page object).MouseLeftButtonDown += PageMouseDown;
+ *  in your Page constructor. 
+ *  
+ *  The snap on and off, the dialogs and the tab controller are all provided as examples of how to use the window management system which 
+ *  is handled using the containers, and your page is fairly independent. There are several ways of managing your pages synergistically 
+ *  with the container window system. 
  */
 using System.ComponentModel;
 using System.Reflection;
@@ -83,18 +101,39 @@ namespace AndysWpfWindowManager
 
         //The Main Window Control region below contains the standard WindowState mouse left button for dragging the window,
         //the minimize, the maximize and the close button override as the title is presented larger
-        //customizable in the xaml.
+        //customizable in the xaml. In order to have a nice Main Window with a large title, custom icons etc... just copy
+        //this region into your main window with the xaml pattern shown above. 
         #region Main Window Control
+
+        /// <summary>
+        /// This captures the left mouse down button to drag and move the window. If not separated from your page, the 
+        /// mouse down will be captured on the top level here, and the page will move. To break this feature in your page
+        /// see comments above about PageMouseDown.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
+        /// <summary>
+        /// This minimizes the window and is attached to the minimization icon on the right hand of the xaml 
+        /// presented above in the right hand stackpanel. Content="___" 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
+        /// <summary>
+        /// This maximizes the wind and is attached to the maximization icon on the right hand of the xaml presented above in the right hand stackpanel.
+        /// Content="🗖"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnMaximize_Click(object sender, RoutedEventArgs e)
         {
             if (WindowState == WindowState.Maximized)
@@ -104,6 +143,12 @@ namespace AndysWpfWindowManager
             else WindowState = WindowState.Maximized;
         }
 
+        /// <summary>
+        /// This method simply closes the main window. You can close other windows by registering windows with the GenericUtilityFactory and then calling close on them from the factory.
+        /// Otherwise windows opened may linger as zombies.  Content="X"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
@@ -111,15 +156,21 @@ namespace AndysWpfWindowManager
         #endregion
 
         //The Specific Testing Code region below contains examples for testing window functionality.
+        //Your coding will vary significantly based on your application, but this provides a demonstration of how to use the window management system
+        //and how to attach pages to the various containers.
+
         #region Specific Testing Code
 
-        int TestTabCount = 1;   //Index to show what dynamic tab number has been added to the window
+        int TestTabCount = 1;   //Index to show what dynamic tab number has been added to the window for convenience, not normal practice. 
 
         /// <summary>
-        /// The Add button is a common header so its attachment is pulled out separately
+        /// The Add button is a common header so its attachment is pulled out separately. In this method we create a headerPanel and attach
+        /// various convenience buttons to it. Other methods are available, such as creating buttons on a header above the windows but 
+        /// this system seems fairly intuitive and flexible. The headerPanel is attached to the TabItem.Header property of the tab item created. 
+        /// The first button is an add button which adds tabs, but you could easily have a menu or other buttons here as well.
         /// </summary>
         /// <param name="tabTitle">Empty new TextBlock to attach the title</param>
-        /// <returns></returns>
+        /// <returns>The StackPanel created</returns>
         public StackPanel CreateHeader(TextBlock tabTitle)
         {
             StackPanel headerPanel = new StackPanel();                              //Stack Panel for header to contain buttons
@@ -144,7 +195,8 @@ namespace AndysWpfWindowManager
 
         /// <summary>
         /// This function provides the first tab. As we do not have a strip across the top, we have the first page set
-        /// as a window controller for demonstration
+        /// as a window controller for demonstration. Various designs are possible, but this is a simple way to show how to attach 
+        /// a page to the first tab and then add tabs from there. 
         /// </summary>
         /// <returns>This returns the TabContainer for attachment to a Frame</returns>
         public TabCustomControl FirstTab()
@@ -161,7 +213,13 @@ namespace AndysWpfWindowManager
             tabItem.Header = headerPanel;
             return tabContainer;
         }
-
+        /// <summary>
+        /// In this method for each page we add onto the Stackpanel for the header of the tab, 
+        /// we add a detach button which detaches the page into a new window and a close button which closes the tab. 
+        /// The first tab is fixed and does not have these buttons for demonstration purposes, but you could easily add them to the first tab as well
+        /// </summary>
+        /// <param name="page">Your page content</param>
+        /// <returns>The TabItem which contains the header that displays the dettach button and close x button</returns>
         public TabItem AttachPageToNewContainer(Page page)
         {
             TabCustomControl tabContainer = (TabCustomControl)FrameTabContainer.Content;    //The tab container initialized with window creation
@@ -211,6 +269,14 @@ namespace AndysWpfWindowManager
             AttachPageToNewContainer(new YPageTest());
         }
 
+        /// <summary>
+        /// When we detach from tab button, we place the page content from the tabcontainer into a new independent window 
+        /// obtained from the WindowFactory. It is give the page and the title. The window's stackpanel is given a button 
+        /// to return the page to the tab container and the window is shown. The closing event is also attached to remove 
+        /// the window from the factory when it is closed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void DetachButton_Click(object sender, RoutedEventArgs e)
         {   
             if (WindowFactory == null) return;
@@ -241,6 +307,13 @@ namespace AndysWpfWindowManager
             window.Show();
         }
 
+        /// <summary>
+        /// On Window return, the page is obtained from the window content and then the window is closed and removed from the factory. 
+        /// The page is then reattached to a new tab in the tab container. This snaps the page back into the tab container. You could easily 
+        /// modify this to snap back into the original tab, but this is a demonstration of the window management system and how to move pages around.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void OnWindowReturn(object sender, RoutedEventArgs e)
         {
             if (sender==null) return;
@@ -258,7 +331,12 @@ namespace AndysWpfWindowManager
             AttachPageToNewContainer(page);
         }
 
-
+        /// <summary>
+        /// In this method when a window is closed, we remove the window from the factory to prevent memory leaks and zombie windows. 
+        /// If you do not do this, windows that are closed may linger in the background and cause problems.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void OnWindowClosing(object sender, CancelEventArgs e)
         {
             if (sender == null) return;
@@ -268,7 +346,13 @@ namespace AndysWpfWindowManager
             WindowFactory.Remove(content);
         }
 
-
+        /// <summary>
+        /// Handles the click event for a tab's close button, closing the corresponding tab in the container.
+        /// </summary>
+        /// <remarks>This method should be connected to the close button's click event within a tab item.
+        /// If the sender does not correspond to a valid tab item, no action is taken.</remarks>
+        /// <param name="sender">The source of the event, expected to be the close button within a tab item.</param>
+        /// <param name="e">The event data associated with the button click.</param>
         public void TabCloseButton_Click(object sender, RoutedEventArgs e)
         {
             if (sender == null) return;
@@ -278,8 +362,6 @@ namespace AndysWpfWindowManager
             tabContainer.Close(tabItem);
 
         }
-
-       
 
         #endregion
     }

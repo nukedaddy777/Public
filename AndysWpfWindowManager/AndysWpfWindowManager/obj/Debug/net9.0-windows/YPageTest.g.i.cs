@@ -61,7 +61,7 @@ namespace AndysWpfWindowManager {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/AndysWpfWindowManager;V1.0.0.0;component/ypagetest.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/AndysWpfWindowManager;component/ypagetest.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\YPageTest.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

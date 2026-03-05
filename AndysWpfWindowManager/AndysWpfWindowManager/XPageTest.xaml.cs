@@ -52,6 +52,12 @@ namespace AndysWpfWindowManager
 
         WpfGenericUtility? mdialog = null;   //Generic window utility fram for trucks, only one per location
 
+        /// <summary>
+        /// This separates the MouseDown even in the surrounding page from affecting this window, so one can intercept 
+        /// left mousedown events without being intercepted by its container.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PageMouseDown(object sender, MouseEventArgs e)
         {
             e.Handled = true;
