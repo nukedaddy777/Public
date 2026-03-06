@@ -46,8 +46,12 @@ namespace AndysWpfWindowManager
                 "are manageable from a central location and one can focus, close or retrieve\n"+
                 "desparate windows in a number of ways";
 
-            // Prevent window drag when clicking on canvas
-            this.MouseLeftButtonDown += PageMouseDown;
+            // Prevent window drag when clicking on canvas - COMMENTED OUT FOR TESTING PURPOSES
+            // This is necessary because the page is contained in a window that allows dragging
+            // by clicking anywhere on the page, but we want to prevent that behavior when
+            // interacting with the controls on the page.
+
+            //  this.MouseLeftButtonDown += PageMouseDown;
         }
 
         WpfGenericUtility? mdialog = null;   //Generic window utility fram for trucks, only one per location
@@ -58,9 +62,53 @@ namespace AndysWpfWindowManager
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PageMouseDown(object sender, MouseEventArgs e)
+      /*  private void PageMouseDown(object sender, MouseEventArgs e)
         {
             e.Handled = true;
+        }
+      */
+
+        static List<WindowInfo> WindowInfoList = new List<WindowInfo>();  //This is a list of all the windows in the app, used for management and display in listbox
+
+        private class WindowInfo
+        {
+            public string Title { get; set; } = String.Empty;
+            public string InTime { get; set; } = DateTime.Now.ToString("MM/dd/yyyy  HH:mm:ss");
+            public Window MyWindow { get; set; } = null;
+
+            public WindowInfo(Window window)
+            {          
+                MyWindow = window;
+                Title = window.Title;
+                
+            }
+        }
+
+        public void AddWindow(Window window)
+        {
+            if (window == null) return;
+            WindowInfo info = new WindowInfo(window);
+            if (LbWindowLog != null)
+            {
+                LbWindowLog.ItemsSource = null;
+                WindowInfoList.Add(info);
+                LbWindowLog.ItemsSource = WindowInfoList;
+            }
+        } 
+
+        public void RemoveWindow(Window window)
+        {
+            if (window == null) return;
+            WindowInfo? info = WindowInfoList.FirstOrDefault(w => w.MyWindow == window);
+            if (info != null)
+            {
+                WindowInfoList.Remove(info);
+                if (LbWindowLog != null)
+                {
+                    LbWindowLog.ItemsSource = null;
+                    LbWindowLog.ItemsSource = WindowInfoList;
+                }
+            }
         }
 
         private void btnNewWindow_Click(object sender, RoutedEventArgs e)
@@ -75,9 +123,9 @@ namespace AndysWpfWindowManager
             PageTabDialogBar? unit = null;         //Tabbed unit in containing pageTruckEdit
             Boolean showFlag = false;
 
-            if (mdialog==null)
+            if (mdialog==null)  //Initialize a multi-tab dialog 
             {
-                mdialog = new WpfGenericUtility("Multi Dialog");
+                mdialog = new WpfGenericUtility("Multi Dialog using WpfGenericUtility");
 
                 double scaleFactor = PresentationSource.FromVisual(btn).CompositionTarget.TransformToDevice.M11;
 
@@ -100,7 +148,8 @@ namespace AndysWpfWindowManager
                 mdialog.Left = buttonPosition.X;
                 mdialog.Top = buttonPosition.Y;
                 showFlag = true;
-            } else
+            }
+            else  //As the multi-tab dialog is already open, add a new tab 
             {
                 container = (TabDialogController) mdialog.FrameContentObj;        //Grab associated tab dialog container 
                 unit = container.AddNewTabContent(page, mSubmit);                    //Create new tabbed content of truck page and associated submit event
@@ -113,7 +162,7 @@ namespace AndysWpfWindowManager
             }
             else
             {
-                mdialog.Activate();
+                mdialog.Activate();    //This assures the window is focused when adding new tabs to an already open multi-tab dialog
             }
 
         }
@@ -143,8 +192,10 @@ namespace AndysWpfWindowManager
             Button btn = sender as Button;
             Point buttonPosition = btn.PointToScreen(new Point(-100, -100));
 
-            YPageTest page = new YPageTest();
-            WpfGenericDialog dialog = new WpfGenericDialog("Single Dialog " + page.Title, page);
+            XPageTest page = new XPageTest();
+            page.LbWindowLog.ItemsSource = null; 
+            page.LbWindowLog.ItemsSource = WindowInfoList;  
+            WpfGenericDialog dialog = new WpfGenericDialog("Single Dialog Using WpfGenericDialog " + page.Title, page);
 
             double scaleFactor = PresentationSource.FromVisual(btn).CompositionTarget.TransformToDevice.M11;
             

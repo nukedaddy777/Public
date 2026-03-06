@@ -39,15 +39,19 @@ namespace AndysWpfWindowManager
                 "This window is an example of a dynamic detachable and retrievable page\n" +
                 "The checkboxes simply allow one to see that the state of the window is\n"+
                 "not changed. Pages are used for these windows, and are encapsulated in\n"+
-                "tabs or when detached, separate windows.";
+                "tabs or when detached, separate windows.\n\n" +
+                "In this page we are preventing the Mouse drag with left down in the page\n"+
+                "This allows one to capture left mouse down for canvas use for example.\n";
 
-            // Prevent window drag when clicking on page
-            this.MouseLeftButtonDown += PageMouseDown;
+            // Prevent window drag when clicking on page  - commented out for now, but this is how you can prevent the
+            // page from being dragged when clicking on it, allowing you to intercept left mouse down events without them
+            // being intercepted by the container.
+               this.MouseLeftButtonDown += PageMouseDown;
         }
 
-        private void PageMouseDown(object sender, MouseEventArgs e)
-        {
-            e.Handled = true;
-        }
+           private void PageMouseDown(object sender, MouseEventArgs e)
+           {
+               e.Handled = true;
+           }
     }
 }

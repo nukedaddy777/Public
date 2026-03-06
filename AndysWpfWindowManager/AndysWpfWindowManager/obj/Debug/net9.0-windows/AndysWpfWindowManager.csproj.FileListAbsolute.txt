@@ -54,9 +54,9 @@ E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-w
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.AssemblyInfoInputs.cache
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.AssemblyInfo.cs
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.csproj.CoreCompileInputs.cache
+E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.sourcelink.json
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.dll
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\refint\AndysWpfWindowManager.dll
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.pdb
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.genruntimeconfig.cache
 E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\ref\AndysWpfWindowManager.dll
-E:\SRC\PublicRepo\AndysWpfWindowManager\AndysWpfWindowManager\obj\Debug\net9.0-windows\AndysWpfWindowManager.sourcelink.json

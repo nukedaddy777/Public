@@ -52,7 +52,7 @@
                                                 <ColumnDefinition Width="70"/>
                                                 <ColumnDefinition Width="343"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBox Grid.Column="0" Margin="3,3,3,3" Text="{Binding InTime}" Background="LightCyan" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                                            <TextBox Grid.Column="0" Margin="3,3,3,3" Text="{Binding InTime}" IsReadOnly="True"  Background="LightCyan" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
                                             <TextBlock Grid.Column="1" Margin="3,3,3,3" Text="{Binding Title}" Background="LightCyan" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
                                         </Grid>
                                         <Grid Grid.Row="1">
@@ -66,10 +66,8 @@
                                                 <ColumnDefinition Width="75"/>
                                                 <ColumnDefinition Width="30"/>
                                             </Grid.ColumnDefinitions>
-                                            <Button x:Name="btnFocus" Content="Select" Margin="3,3,3,3" Grid.Column="0"/>
-                                            <Button x:Name="btnSeparate" Content="Detach" Margin="3,3,3,3"  Grid.Column="2"/>
-                                            <Button x:Name="btnPullBack" Content="Attach" Margin="3,3,3,3"  Grid.Column="4"/>
-                                            <Button x:Name="btnClose" Content="Close" Margin="3,3,3,3"  Grid.Column="6"/>
+                                            <Button x:Name="btnFocus" Content="Select" IsEnabled="False" Margin="3,3,3,3" Grid.Column="2"/>
+                                            <Button x:Name="btnClose" Content="Close" IsEnabled="False" Margin="3,3,3,3"  Grid.Column="4"/>
                                         </Grid>
                                         <Separator Grid.Row="2"/>
                                     </Grid>

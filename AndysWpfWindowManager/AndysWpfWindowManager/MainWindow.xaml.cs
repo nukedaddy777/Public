@@ -99,6 +99,8 @@ namespace AndysWpfWindowManager
 
         GenericUtilityFactory WindowFactory = new GenericUtilityFactory();
 
+        public XPageTest? WorkingPage = null;
+
         //The Main Window Control region below contains the standard WindowState mouse left button for dragging the window,
         //the minimize, the maximize and the close button override as the title is presented larger
         //customizable in the xaml. In order to have a nice Main Window with a large title, custom icons etc... just copy
@@ -203,7 +205,9 @@ namespace AndysWpfWindowManager
         {
             TabCustomControl tabContainer = new TabCustomControl(this);
 
-            TabItem tabItem = tabContainer.AddNewTabContent(new XPageTest()); //Create new Tab
+            WorkingPage  = new XPageTest();
+
+            TabItem tabItem = tabContainer.AddNewTabContent(WorkingPage); //Create new Tab
 
             TextBlock tabTitle = new TextBlock();         // Text for tab title right now kind of boring
             StackPanel headerPanel = CreateHeader(tabTitle);
@@ -211,6 +215,7 @@ namespace AndysWpfWindowManager
             tabTitle.Text = "First tab Window - fixed";
            
             tabItem.Header = headerPanel;
+
             return tabContainer;
         }
         /// <summary>
@@ -288,8 +293,10 @@ namespace AndysWpfWindowManager
             Page page = (Page) frame.Content;
             tabContainer.Close(tabItem);            //Close old window
 
-            WpfGenericUtility window = WindowFactory.GetNewWindow(page.Title,page);
-           
+
+            WpfGenericUtility? window = WindowFactory.GetNewWindow(page.Title,page);    //A new independent window is not made until detached. 
+            if (window == null) return;
+
             StackPanel stackPanel = window.stackPanel;
 
             Button returnButton = new Button();        //A closing button is added, but we are going to keep the first button without a close
@@ -305,6 +312,8 @@ namespace AndysWpfWindowManager
 
             window.Closing += OnWindowClosing;
             window.Show();
+            WorkingPage?.AddWindow(window);            //Displays the windows that are detached for demonstration purposes. Not normally done unless 
+                                                       // you want to track them in the working page and manage them with your independent window management system.
         }
 
         /// <summary>
@@ -323,7 +332,9 @@ namespace AndysWpfWindowManager
             Window window = Window.GetWindow(btn);
 
             WpfGenericUtility? testWindow = (WpfGenericUtility) window;
-          
+           
+            WorkingPage?.AddWindow(testWindow);  
+
             if (testWindow == null) return;
             Page page = (Page) testWindow.UtilityContentFrame.Content;
             WindowFactory.Remove(testWindow);
@@ -344,10 +355,13 @@ namespace AndysWpfWindowManager
             if (testWindow == null) return;
             object content = testWindow.UtilityContentFrame.Content;
             WindowFactory.Remove(content);
+            WorkingPage?.RemoveWindow(testWindow);
         }
 
         /// <summary>
-        /// Handles the click event for a tab's close button, closing the corresponding tab in the container.
+        /// Important Pattern for closing tabs. When the close button is clicked, we find the parent tab item of the button that was 
+        /// clicked and then close that tab item in the tab container. This handles the click event for a tab's close button, closing the 
+        /// corresponding tab in the container and also 
         /// </summary>
         /// <remarks>This method should be connected to the close button's click event within a tab item.
         /// If the sender does not correspond to a valid tab item, no action is taken.</remarks>
@@ -358,6 +372,21 @@ namespace AndysWpfWindowManager
             if (sender == null) return;
             TabCustomControl tabContainer = (TabCustomControl)FrameTabContainer.Content;
             TabItem? tabItem = tabContainer.FindSenderParent(sender);
+
+            //Manage the window if the tab is detached before closing the tab.
+            //If the tab is detached, we need to close the window that contains the page for the tab being closed.
+            Page page                = tabContainer.ReverseTabDictionary[tabItem];             //Content that is the page for the tab being closed.
+            
+            
+            WpfGenericUtility? window = WindowFactory.WindowContentDict[page];                  //Window that contains the page for the tab being closed, if it is detached.
+            if (window!= null)
+            {
+                WorkingPage?.RemoveWindow(window);    //Remove the window from the working page if it is being tracked there.
+                WindowFactory.Remove(window);         //Remove the window from the factory to prevent memory leaks and zombie windows.
+                                                      //If you do not do this, windows that are closed may linger in the background and cause problems.
+                window.Close();
+            }
+               
             if (tabItem == null) return;
             tabContainer.Close(tabItem);
 
