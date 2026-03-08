@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WpfMenuTestApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+230c0108875b66fd55036368366d7f05cb985357")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1daa84ffa414706c0e3f448af802f373ae71b8c")]
 [assembly: System.Reflection.AssemblyProductAttribute("WpfMenuTestApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WpfMenuTestApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

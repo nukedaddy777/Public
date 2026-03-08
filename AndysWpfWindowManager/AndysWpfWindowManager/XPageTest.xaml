@@ -26,13 +26,13 @@
                 <RowDefinition Height="15*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="45*"/>
+                <ColumnDefinition Width="448*"/>
+                <ColumnDefinition Width="448.182"/>
+                <ColumnDefinition Width="45*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="1" FontSize="18" VerticalAlignment="Top" Margin="10,2,2,2"  >
-                 First Tab - Fixed in this demonstration 
+                 First Tab - Fixed in this demonstration
             </TextBlock>
             <GroupBox Grid.Column="1" Grid.Row="1" Header="Tab Windows" Grid.RowSpan="2" BorderThickness="2" BorderBrush="Black">
                 <Grid VerticalAlignment="Stretch">
@@ -87,7 +87,7 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
                     <Button x:Name="btnNewWindow" Grid.Row="1" Margin="80,4,80,4" Click="btnNewWindow_Click">
-                           Multi-tab dialog
+                        Multi-tab dialog
                     </Button>
                     <Button x:Name="btnSingleDialog" Grid.Row="2" Margin="80,4,80,4" Click="btnSingleDialog_Click">
                         Single Independent Dialog
