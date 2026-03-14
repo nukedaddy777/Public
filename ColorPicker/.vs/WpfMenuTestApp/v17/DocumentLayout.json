@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\SRC\\BackupRepo\\WPFTesting\\ColorPicker\\",
+  "WorkspaceRootPath": "E:\\SRC\\PublicRepo\\ColorPicker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E67A84E1-6A89-4FAA-A7C1-2F90560552B5}|WpfMenuTestApp\\WpfMenuTestApp.csproj|e:\\src\\backuprepo\\wpftesting\\colorpicker\\wpfmenutestapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E67A84E1-6A89-4FAA-A7C1-2F90560552B5}|WpfMenuTestApp\\WpfMenuTestApp.csproj|e:\\src\\publicrepo\\colorpicker\\wpfmenutestapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E67A84E1-6A89-4FAA-A7C1-2F90560552B5}|WpfMenuTestApp\\WpfMenuTestApp.csproj|solutionrelative:wpfmenutestapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E67A84E1-6A89-4FAA-A7C1-2F90560552B5}|WpfMenuTestApp\\WpfMenuTestApp.csproj|e:\\src\\backuprepo\\wpftesting\\colorpicker\\wpfmenutestapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{E67A84E1-6A89-4FAA-A7C1-2F90560552B5}|WpfMenuTestApp\\WpfMenuTestApp.csproj|e:\\src\\publicrepo\\colorpicker\\wpfmenutestapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E67A84E1-6A89-4FAA-A7C1-2F90560552B5}|WpfMenuTestApp\\WpfMenuTestApp.csproj|solutionrelative:wpfmenutestapp\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -28,9 +28,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "E:\\SRC\\BackupRepo\\WPFTesting\\ColorPicker\\WpfMenuTestApp\\MainWindow.xaml",
+              "DocumentMoniker": "E:\\SRC\\PublicRepo\\ColorPicker\\WpfMenuTestApp\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WpfMenuTestApp\\MainWindow.xaml",
-              "ToolTip": "E:\\SRC\\BackupRepo\\WPFTesting\\ColorPicker\\WpfMenuTestApp\\MainWindow.xaml",
+              "ToolTip": "E:\\SRC\\PublicRepo\\ColorPicker\\WpfMenuTestApp\\MainWindow.xaml",
               "RelativeToolTip": "WpfMenuTestApp\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-02-19T13:43:46.788Z"
@@ -39,9 +39,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "E:\\SRC\\BackupRepo\\WPFTesting\\ColorPicker\\WpfMenuTestApp\\MainWindow.xaml.cs",
+              "DocumentMoniker": "E:\\SRC\\PublicRepo\\ColorPicker\\WpfMenuTestApp\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "WpfMenuTestApp\\MainWindow.xaml.cs",
-              "ToolTip": "E:\\SRC\\BackupRepo\\WPFTesting\\ColorPicker\\WpfMenuTestApp\\MainWindow.xaml.cs",
+              "ToolTip": "E:\\SRC\\PublicRepo\\ColorPicker\\WpfMenuTestApp\\MainWindow.xaml.cs",
               "RelativeToolTip": "WpfMenuTestApp\\MainWindow.xaml.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAAAFIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
