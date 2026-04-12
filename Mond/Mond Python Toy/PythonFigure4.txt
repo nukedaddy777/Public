@@ -1,0 +1,26 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11
+M = 1.989e41          # kg (1e11 Msun)
+a0 = 1.2e-10          # m/s²
+kpc_to_m = 3.08568e19
+
+r_kpc = np.logspace(-1, 2, 500)
+r = r_kpc * kpc_to_m
+
+g_N = G * M / r**2
+g_eff = np.sqrt(g_N * a0)
+
+plt.figure(figsize=(10,6))
+plt.loglog(r_kpc, g_N, 'b--', label='Newtonian 1/r²')
+plt.loglog(r_kpc, g_eff, 'r-', label='Wavefront hypothesis / MOND (1/r at large r)')
+plt.axvline(15, color='gray', linestyle=':', label='~15 kpc transition (Milky Way)')
+plt.xlabel('Distance from galactic center (kpc)')
+plt.ylabel('Effective gravitational acceleration (m s⁻²)')
+plt.title('Figure 4: Predicted Transition from Newtonian 1/r² to MOND-like 1/r Regime')
+plt.legend()
+plt.grid(True, which='both')
+plt.savefig('figure4_milkyway_transition.png', dpi=300)
+plt.show()

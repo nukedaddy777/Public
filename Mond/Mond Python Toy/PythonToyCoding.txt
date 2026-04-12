@@ -1,0 +1,51 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# ====================== PARAMETERS ======================
+N = 2048                  # grid points
+L = 200.0                 # arbitrary length scale (units where c=1)
+dx = L / N
+x = np.linspace(-L/2, L/2, N)
+k = 2*np.pi * np.fft.fftfreq(N, d=dx)
+
+# Initial localized wave packet (high-k content = near-mass decoherence)
+sigma0 = 1.0
+psi0 = np.exp(-x**2 / (2*sigma0**2)) * np.exp(1j * 20 * x)   # initial momentum kick
+
+# Fourier transform
+psi_k = np.fft.fft(psi0)
+
+# Viscous damping: high-k modes suppressed (k^4 like viscosity)
+k_damp = 15.0
+damping_factor = np.exp( - (np.abs(k) / k_damp)**4 )
+
+# Apply damping (can iterate for multiple "mixing steps")
+psi_damped_k = psi_k * damping_factor
+psi_damped = np.fft.ifft(psi_damped_k).real   # take real part for visualization
+
+# Position uncertainty
+def pos_uncertainty(psi, x):
+    prob = np.abs(psi)**2
+    prob /= np.sum(prob)
+    mean_x = np.sum(x * prob)
+    var_x = np.sum((x - mean_x)**2 * prob)
+    return np.sqrt(var_x)
+
+delta_x0 = pos_uncertainty(psi0, x)
+delta_x_damped = pos_uncertainty(psi_damped, x)
+
+print(f"Initial Δx: {delta_x0:.2f}")
+print(f"Damped Δx: {delta_x_damped:.2f}")
+print(f"Growth factor: {delta_x_damped/delta_x0:.1f}×")
+
+# Plot (save to file for GitHub)
+plt.figure(figsize=(10,5))
+plt.plot(x, psi0.real, label='Initial (localized, choppy)', alpha=0.7)
+plt.plot(x, psi_damped, label='After CMB viscous damping (broadened wavefront)', linewidth=2)
+plt.xlabel('Position')
+plt.ylabel('Wave amplitude')
+plt.title('Toy Model: Spherical-harmonic → Surface-harmonic Transition')
+plt.legend()
+plt.grid(True)
+plt.savefig('wavefront_transition_toy_model.png', dpi=300)
+plt.show()
